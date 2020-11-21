@@ -13,14 +13,11 @@
         #id{
             height: 38px;
         }
-        img{
-            height : 500px;
-            width :  700px;
-            margin-left: 350px;
-            border-radius: 100px;
-            margin-top : 10px;
-            border: 3px solid black;
+        #lol{
+            margin-top: 10px;
+            margin-left: 20px;
         }
+        
     </style>
 </head>
 <body>
@@ -43,23 +40,18 @@
                <a class="nav-link" href="/live">User Online</a>
                <li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Admin">Admin</a>
+                    <a class="nav-link" href="/Admin" >Admin</a>
                     <li>
-               
    </ul>
  </div>
 </nav>
-    </header>
-    <div class = "fm">
-        <form action = "/rooms" method = "POST">
-            <input type = "text" name = "room_name" id = "txt"/>
-            <button type = "submit" class = "btn btn-success">Create Group</button>
-        </form>
-    </div>
-    
-    <img src = "connect.png">
-    </script>
-    
-
+</header>
+<form action = "/admin_login" method = "POST" id = "lol">
+     <lable>ADMIN_USERNAME</lable>
+     <input type = "text"  name = "username">
+     <label>Password</label>
+    <input type = "password"  name= "password">
+    <button type = "submit" class = "btn btn-primary">Login</button>
+</form>
 </body>
 </html>

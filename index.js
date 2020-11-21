@@ -1,3 +1,4 @@
+require('dotenv').config({path: __dirname + '/.env'});
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 const ejs = require('ejs');
@@ -20,17 +21,46 @@ server.listen(port, function(req , res){
        console.log("server started");
 });
 
+
+
 let map = new Map();
 
 var User = ['Web development' , 'CP' , 'Job Search'];
 const users= {};
 
 
+app.get("/Admin", function(req,res){
+    //////console.log("lala i am havinf");
+    res.render("admin");
+});
+
+
+app.post("/admin_login", function(req,res){
+    //////console.log("hello lala");
+    ///console.log(req.body.username );
+    ///console.log(process.env.USERNAME);
+    ///console.log(req.body.password);
+    ///console.log(process.env.PASSWORD);
+    if(req.body.username === process.env.USERNAME && req.body.password === process.env.PASSWORD){
+        res.render("secret", {user : User});
+    }
+    else{
+      res.render("admin");
+    }       
+});
+
 
 app.get("/live", function(req,res){
        res.render("Live", {map : map, users : users});
    });
    
+app.post("/grpdel", function(req,res){
+    const index = User.indexOf(req.body.group);
+    if (index > -1) {
+      User.splice(index, 1);
+    }
+    res.render("secret" , {user : User});
+});
 
 io.on('connection', function(socket){
        socket.on('new-user-joined', function(name, room){
@@ -83,7 +113,9 @@ app.get("/", function(req,res){
 });
 
 app.post("/rooms" , function(req,res){
-       ////console.log("hellloo");
+       if(req.body.room_name == ""){
+           return res.redirect("/");
+       }
        if(check(req.body.room_name)){
              res.redirect("/rooms");
             ////res.render("groups" , {user : User}); 
@@ -105,6 +137,8 @@ app.get("/rooms", function(req,res){
 
 
 app.get("/:roomname", function(req,res){
-       console.log(req.params.roomname);
+       //////console.log(req.params.roomname);
        res.render("chatroom", { room : req.params.roomname});
 });
+
+
