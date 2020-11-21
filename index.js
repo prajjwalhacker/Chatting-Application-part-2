@@ -30,14 +30,15 @@ const users= {};
 
 
 app.get("/Admin", function(req,res){
-    //////console.log("lala i am havinf");
     res.render("admin");
 });
 
 
 app.get("/exist", function(req,res){
     res.render("existing" , {user : User});
-})
+});
+
+
 
 app.post("/admin_login", function(req,res){
     //////console.log("hello lala");
