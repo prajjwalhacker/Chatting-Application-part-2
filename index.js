@@ -35,6 +35,10 @@ app.get("/Admin", function(req,res){
 });
 
 
+app.get("/exist", function(req,res){
+    res.render("existing" , {user : User});
+})
+
 app.post("/admin_login", function(req,res){
     //////console.log("hello lala");
     ///console.log(req.body.username );
