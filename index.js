@@ -22,7 +22,7 @@ server.listen(port, function(req , res){
 
 let map = new Map();
 
-var User = [];
+var User = ['Web development' , 'CP' , 'Job Search'];
 const users= {};
 
 

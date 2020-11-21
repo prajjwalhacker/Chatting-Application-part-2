@@ -16,7 +16,7 @@
             margin: auto;
             border: 3px solid blueviolet;
             border-radius: 10px;
-            overflow-y: hidden;
+            overflow-y: scroll;
             padding-left: 10px;
             padding-top: 10px;
         }
@@ -58,7 +58,7 @@
     <div class = "containerr">
     <%  for(let i=0;i<(user.length);i++){ %>
          <% link = "/" + user[i]  %> 
-        <h5><%= i+1 %><%= " " %><%= user[i] %> <%= " " %><a href ="<%= link %>"><button class = "btn btn-success" id = "lav">Join Chat</button></a></h5>
+        <h6><%= i+1 %><%= ") " %><%= user[i] %> <%= " " %><a href ="<%= link %>"><button class = "btn btn-success" id = "lav">Join Chat</button></a></h6>
   <% } %> 
     </div>
      
