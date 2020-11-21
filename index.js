@@ -1,13 +1,13 @@
-const express = require("express");
-const app = express();
-const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-const { checkServerIdentity } = require("tls");
-
-const server = require("http").Server(app);
+const ejs = require('ejs');
+const http = require('http');
+const express = require('express');
+const socketIO = require('socket.io');
+var app = express();
+var server = http.createServer(app);
+var io = socketIO(server);
 const port = process.env.PORT || 3000;
-
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,8 +24,6 @@ let map = new Map();
 
 var User = [];
 const users= {};
-
-const io = require('socket.io')(server);
 
 
 
